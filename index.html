@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
    <head>
@@ -38,32 +40,19 @@
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTP37V"
          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
-      <!--************************** NUEVO BOTON DE CENTRO DE AYUDA -->
-      <div class="listado-ayuda">
-         <ul class="list-ayuda">
-            <li>
-               <a href="">¿DÓNDE VEO MIS VIDEOS?</a>
-            </li>
-            <li>    
-               <a href="">¿DÓNDE INGRESO MI CÓDIGO?</a>
-            </li>
-            <li>
-               <a href="">OTRAS PREGUNTAS</a>
-            </li>
-            <li class="ultimo">    
-               <a href="">CONTÁCTANOS</a>
-            </li>
-         </ul>
-         <div class="triangulo"></div>
-      </div>
-      <button  class="btn bton" id="btn-ayuda">
-      <i class="flaticon-lifebuoy"></i>CENTRO DE AYUDA
-      </button>
-      <!--************************** NUEVO BOTON DE CENTRO DE AYUDA -->
       <div id="wrapper">
          <header id="header" class="header">
+            <!--  CENTRO DE  AYUDA -->
+            <div class="bk-ayuda fixed-top">
+               <div class="container-ayuda">
+                  <a href="#" class="pergunta">
+                  <img src="img/pregunta.svg" alt="pregunta">CENTRO DE AYUDA
+                  </a>
+               </div>
+            </div>
+            <!--  CENTRO DE  AYUDA -->
             <div class="container">
-               <div class="wrapp-header d-flex justify-content-between align-items-center">
+               <div class="wrapp-header d-flex justify-content-between align-items-center top-ticket">
                   <a class="navbar-brand" href="https://www.puntoticket.com">
                   <img class="static" src="https://static.puntoticket.com/especiales/play/images/logo.svg" alt="Logo">
                   </a>
@@ -83,62 +72,118 @@
                         </li>
                         <li id="navIngresaCodigos" class="nav-item">
                            <div class="dropdown" id="abrete">
-                              <a href="codigos.html" class="nav-link dropdown tienes-codigos">
-                              ¿TIENES CÓDIGO(S)?
+                              <a href="#" class="nav-link dropdown tienes-codigos"
+                                 onclick="limpiarInputCodigoCanje()"
+                                 id="ingresa-codigos-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              ¿TIENES CÓDIGOS?
                               </a>
-                              <a href="codigos.html" class="nav-link dropdown tienes-codigos-mobile flex-column flex-md-row align-items-center justify-content-between">
-                              ¿TIENES CÓDIGO(S)?
+                              <a href="#" class="nav-link dropdown tienes-codigos-mobile flex-column flex-md-row align-items-center justify-content-between"
+                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              ¿TIENES CÓDIGOS?
                               </a>
+                              <div class="dropdown-menu_mobile">
+                                 <ul id="formAplicarCupoCanjeMobile" style="display:none;">
+                                    <li>
+                                       <form id="form-aplicar-cupon-canje-mobile" style="display:flex; flex:1; flex-flow:row wrap;">
+                                          <input type="text"
+                                             name="codigo-canje-mobile"
+                                             id="codigo-canje-mobile"
+                                             class="form-control"
+                                             placeholder="Ej: AI81273ODHSJEUYJEY"
+                                             style="width:85%; height:40px;"
+                                             required
+                                             minlength="16"
+                                             maxlength="16" />
+                                          <button type="submit" style="width:15%;
+                                             color:white;
+                                             font-weight:bold;
+                                             height:40px;
+                                             border-radius:2px;
+                                             border:solid 1px #f2662a;
+                                             background-color:#ff6a00">
+                                          +
+                                          </button>
+                                       </form>
+                                    </li>
+                                    <li><small id="mensajes-aplicar-cupon-canje-mobile" style="display:none"></small></li>
+                                 </ul>
+                              </div>
+                              <div class="dropdown-menu ayuda_mobile" id="contenedor-ingresa-codigos" aria-labelledby="ingresa-codigos-dropdown">
+                                 <span class="dropdown-menu-arrow"></span>
+                                 <ul>
+                                    <li class="dropdown-item" style="border-bottom:none;">
+                                       <div class="container-fluid">
+                                          <div class="row">
+                                             <div class="col-lg-12">
+                                                <span style="color:#222222;">
+                                                ¡Genial! Ingresa tus códigos y a disfrutar
+                                                </span>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-lg-12">
+                                                <form id="form-aplicar-cupon-canje" style="display:flex; flex:1; flex-flow:row wrap;">
+                                                   <input type="text"
+                                                      name="codigo-canje"
+                                                      id="codigo-canje"
+                                                      class="form-control"
+                                                      placeholder="Ej: AI81273ODHSJEUYJEY"
+                                                      style="width:85%; height:40px;"
+                                                      required
+                                                      minlength="16"
+                                                      maxlength="16" />
+                                                   <button type="submit" style="width:15%;
+                                                      color:white;
+                                                      font-weight:bold;
+                                                      height:40px;
+                                                      border-radius:2px;
+                                                      border:solid 1px #f2662a;
+                                                      background-color:#ff6a00">
+                                                   +
+                                                   </button>
+                                                </form>
+                                                <small id="mensajes-aplicar-cupon-canje" style="display:none"></small>
+                                                <br />
+                                             </div>
+                                          </div>
+                                          <div class="row" id="aplicar-cupon-canje" style="display:none;">
+                                             <div class="col-lg-12">
+                                                <div style="width: 100%;" id="imagen-evento-codigo">
+                                                   <img style="width:215px;" src="https://static.puntoticket.com/especiales/play/images/6e6af784-3f84-46c7-a4e2-57dd978e500e-img.jpg" />
+                                                </div>
+                                                <div style="width:215px; white-space:normal; font-size:medium; text-align:center;" id="nombre-evento-codigo"></div>
+                                                <div style="width:100%;" class="float-right" id="fecha-evento-codigo"></div>
+                                                <br />
+                                                <div style="width:100%; text-align:center;" id="boton-ver-evento-codigo"></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
                            </div>
                         </li>
-                        <li class="nav-item">
-                           <a href="#" class="nav-link" >INGRESA</a>
+                        <li id="navMiCuenta" class="nav-item" style="display:none;">
+                           <a class="nav-link" href="https://compra.puntoticket.com/Cliente/MiCuenta">MI CUENTA</a>
+                        </li>
+                        <li id="navCerrarSesion" class="nav-item" style="display:none;">
+                           <a class="nav-link" href="https://compra.puntoticket.com/Account/SignOut">CERRAR SESIÓN</a>
+                        </li>
+                        <li id="navIngresa" class="nav-item active" style="display:none;">
+                           <a class="nav-link" href="https://compra.puntoticket.com/Account/SignIn?ReturnUrl=%2Fplay">INGRESA</a>
+                        </li>
+                        <li id="navRegistrate" class="nav-item" style="display:none;">
+                           <a class="nav-link" href="https://compra.puntoticket.com/Account/Register">REGÍSTRATE</a>
                         </li>
                         <li class="nav-item">
-                           <a href="" class="nav-link" >REGÍSTRATE</a>
+                           <a href="#" class="nav-link" >MIS VIDEOS</a>
                         </li>
-                        <!----
-                           <li id="navCentroAyuda" class="nav-item">
-                               <div class="dropdown">
-                                   <a href="#" class="nav-link dropdown centro-ayuda" id="centro-ayuda-dropdown" data-toggle="dropdown"
-                                      aria-haspopup="true" aria-expanded="false">
-                                       <i class="icon ayuda_icon"></i> CENTRO DE AYUDA
-                                   </a>
-                                   <a href="#" class="nav-link dropdown centro-ayuda-mobile" id="centro-ayuda-dropdown" data-toggle="dropdown"
-                                      aria-haspopup="true" aria-expanded="false">
-                                       CENTRO DE AYUDA
-                                   </a>
-                                   <div class="dropdown-menu_mobile">
-                                       <ul style="display:none !important" id="centro-ayuda-opciones">
-                                           <li class="ayuda-item"><a href="http://www.puntoticket.com/paginas/play-faq" target="_blank">PREGUNTAS FRECUENTES</a></li>
-                                           <li class="ayuda-item"><a href="http://www.puntoticket.com/paginas/play-condiciones" target="_blank">TÉRMINOS Y CONDICIONES</a></li>
-                                           <li class="ayuda-item"><a href="https://puntoticket.zendesk.com/hc/es/requests/new" target="_blank">CONTÁCTANOS</a></li>
-                                           <li class="ayuda-item" style="border-bottom: none;"><a href="https://puntoticket1.typeform.com/to/glskupRY" target="_blank">TRANSMITE CON NOSOTROS</a></li>
-                                       </ul>
-                                   </div>
-                                   <div class="dropdown-menu ayuda_mobile" aria-labelledby="centro-ayuda-dropdown">
-                                       <span class="dropdown-menu-arrow"></span>
-                                       <ul>
-                                           <li class="dropdown-item"><a href="http://www.puntoticket.com/paginas/play-faq" target="_blank">PREGUNTAS FRECUENTES</a></li>
-                                           <li class="dropdown-item"><a href="http://www.puntoticket.com/paginas/play-condiciones" target="_blank">TÉRMINOS Y CONDICIONES</a></li>
-                                           <li class="dropdown-item"><a href="https://puntoticket.zendesk.com/hc/es/requests/new" target="_blank">CONTÁCTANOS</a></li>
-                                           <li class="dropdown-item" style="border-bottom: none;"><a href="https://puntoticket1.typeform.com/to/glskupRY" target="_blank">TRANSMITE CON NOSOTROS</a></li>
-                                       </ul>
-                                   </div>
-                               </div>
-                           </li>
-                           <li id="navMiCuenta" class="nav-item" style="display:none;">
-                               <a class="nav-link" href="https://compra.puntoticket.com/Cliente/MiCuenta">MI CUENTA</a>
-                           </li>
-                           <li id="navCerrarSesion" class="nav-item" style="display:none;">
-                               <a class="nav-link" href="https://compra.puntoticket.com/Account/SignOut">CERRAR SESIÓN</a>
-                           </li>
-                           <li id="navIngresa" class="nav-item active" style="display:none;">
-                               <a class="nav-link" href="https://compra.puntoticket.com/Account/SignIn?ReturnUrl=%2Fplay">INGRESA</a>
-                           </li>
-                           <li id="navRegistrate" class="nav-item" style="display:none;">
-                               <a class="nav-link" href="https://compra.puntoticket.com/Account/Register">REGÍSTRATE</a>
-                           </li>-->
+                        <li class="nav-item">
+                           <a href="#" class="nav-link" >MI CUENTA</a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="" class="nav-link" >CERRAR SESIÓN</a>
+                        </li>
                      </ul>
                      <a class="d-block d-md-none drop-list dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="cerrarCodigoCanje()">
@@ -160,350 +205,365 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-2">
                            <span class="logo-p-t">
-                              <img src="https://static.puntoticket.com/especiales/play/images/playlogo.svg" class="img-responsive" alt="logo puntoplay" title="puntoplay">
+                           <img src="img/logo-pp.svg" class="img-responsive" alt="logo puntoplay" title="puntoplay">
                            </span>
                         </div>
                      </div>
                   </div>
-                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                     <div class="tab-control">
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                           <li class="nav-item" role="presentation">
-                              <a class="nav-link active" id="miscompras" data-toggle="pill" href="#miscompras-tab" role="tab" aria-controls="miscompras" aria-selected="true">MIS COMPRAS</a>
-                           </li>
-                           <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="detallesdecompra" data-toggle="pill" href="#detallesdecompras-tab" role="tab" aria-controls="detallesdecompra" aria-selected="false">DETALLE DE COMPRAS</a>
-                           </li>
-                           <li class="nav-item" role="presentation">
-                              <a class="nav-link" id="cambiarcontrasena" data-toggle="pill" href="#cambiarcontrasena-tab" role="tab" aria-controls="cambiarcontrasena" aria-selected="false">CAMBIAR CONTRASEÑA</a>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-
-
-
-
-
-                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                     <div class="tab-content tab-pills" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="miscompras-tab" role="tabpanel" aria-labelledby="miscompras">
-                           <!--  tab interior -->
-                           <ul class="nav nav-tabs nav-tabs-compras" id="resumen-compras" role="tablist">
-                              <li class="nav-item" role="presentation">
-                                 <a class="nav-link un active" id="home-tab" data-toggle="tab" href="#activos" role="tab" aria-controls="activos" aria-selected="true">Activos</a>
-                              </li>
-                              <li class="nav-item" role="presentation">
-                                 <a class="nav-link" id="inactivos-tab" data-toggle="tab" href="#inactivos" role="tab" aria-controls="inactivos" aria-selected="false">Caducados</a>
-                              </li>
-                           </ul>
-                           <!-- tab interior-->    
-                           <div class="tab-content estados" id="compras-tab">
-                              <!-- TAB ACTIVOS-->    
-                              <div class="tab-pane fade show active" id="activos" role="tabpanel" aria-labelledby="activos-tab">
-                                 <!-- CARD ACTIVOS -->
-                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="referencia">
-                                       <span class="ico-no">
-                                          <img src="img/private.svg" class="img-fluid" alt="no disponible">
-                                       </span>
-                                       El código ya fué utilizado
+                  <!--  tab interior -->
+                  <ul class="nav nav-tabs nav-tabs-compras" id="resumen-compras" role="tablist">
+                     <li class="nav-item" role="presentation">
+                        <a class="nav-link un active" id="home-tab" data-toggle="tab" href="#activos" role="tab" aria-controls="activos" aria-selected="true">Activos</a>
+                     </li>
+                     <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="inactivos-tab" data-toggle="tab" href="#inactivos" role="tab" aria-controls="inactivos" aria-selected="false">Caducados</a>
+                     </li>
+                  </ul>
+                  <!-- tab interior-->    
+                  <div class="tab-content estados" id="compras-tab">
+                     <!-- TAB ACTIVOS-->    
+                     <div class="tab-pane fade show active" id="activos" role="tabpanel" aria-labelledby="activos-tab">
+                        <!-- CARD ACTIVOS -->
+                        <div class="card card-bk">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex  flex-md-row">
+                                       <div class="bk-image lex-fill">
+                                          <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
+                                       </div>
+                                       <div class="bk-t flex-fill">
+                                          <div class="col-tit tit-estado">
+                                             El negro
+                                          </div>
+                                          <div class="col-tit txt-estado">
+                                             Video disponible del 26-08-2020 hasta 29-09-2020
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
-                                 <div class="card card-bk">
-                                    <div class="col-12">
-                                       <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                             <div class="d-flex  flex-md-row">
-                                                <div class="bk-image lex-fill">
-                                                   <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
-                                                </div>
-                                                <div class="bk-t flex-fill">
-                                                   <div class="col-tit tit-estado">
-                                                      El negro
-                                                   </div>
-                                                   <div class="col-tit txt-estado">
-                                                      Video disponible del 26-08-2020 hasta 29-09-2020
-                                                   </div>
-                                                </div>
-                                             </div>
+                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                    <div class="col-tit">
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="num-ticket">
+                                             Ticket 1 
                                           </div>
-                                          <div class="col-12 col-sm-12 col-md-5 col-lg-5  text-center">
-                                             <div class="col-tit">
-                                                <a class="btn btn-vid" href="">
-                                                Ver video
-                                                </a>
-                                             </div>
-                                             <div class="col-tit">
-                                                <a href="#" class="link-info" >
-                                                <span class="ico"><img src="img/005-information.svg" class="img-fluid infoico" alt="info"></span>¿No lo verás y quieres regalar el código?
-                                                </a>
-                                             </div>
+                                          <div class="flex-fill">
+                                             <a class="btn btn-vid" href="">
+                                             Ver video
+                                             </a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-tit">
+                                       <div class="d-flex flex-row">
+                                          <div>
+                                          </div>
+                                          <div class="flex-fill text-center">
+                                             <span class="link-info" >
+                                             O regala tu ticket enviando este link (Perderás la opción de verlo desde tu cuenta) 
+                                             </span>
                                              <div class="col-tit text-center">
-                                                <span class="code">
-                                                J5FG6H6fY9O
-                                                </span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-12">
-                                       <div class="row bord">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                                   <div class="d-flex">
-                                                      <div class="bk-image lex-fill space-code"></div>
-                                                      <div class="bk-t flex-fill">
-                                                         <div class="col-tit txt-leg-1-a">
-                                                            Compraste más de 1 entrada en esta misma orden
-                                                         </div>
-                                                         <div class="col-tit txt-leg-1">
-                                                            Si deseas que otra persona se conecte desde otra cuenta y dispositivo con una de tus entradas deberás enviarle un código
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                                   <div class="codes-scroll">
-                                                      <div class="d-flex flex-column  codes">
-                                                         <div>
-                                                            <div class="codes-b">
-                                                               J5FG6H6fY9O
-                                                            </div>
-                                                         </div>
-                                                         <div>
-                                                            <div class="codes-b">
-                                                               J5FG6H6fY9O
-                                                            </div>
-                                                         </div>
-                                                         <div>
-                                                            <div class="codes-b inactivo">
-                                                               <span class="ico-no">
-                                                               <img src="img/private.svg" class="img-fluid" alt="no disponible">
-                                                               </span>
-                                                               J5FG6H6fY9O
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
+                                                <input type="text" value="http://623536545673" class="code" data-toggle="tooltip" data-placement="right" title="Click para copiar">
                                              </div>
                                           </div>
                                        </div>
                                     </div>
                                  </div>
-                                 <!-- card activos -->        
-                                 <!-- SIN VIDEO -->
-                                 <div class="card card-bk">
-                                    <div class="col-12">
-                                       <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                             <div class="d-flex  flex-md-row">
-                                                <div class="bk-image lex-fill">
-                                                   <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
-                                                </div>
-                                                <div class="bk-t flex-fill">
-                                                   <div class="col-tit tit-estado">
-                                                      El negro
-                                                   </div>
-                                                   <div class="col-tit txt-estado">
-                                                      Video disponible del 26-08-2020 hasta 29-09-2020
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-12">
-                                       <div class="row bord">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                                   <div class="d-flex">
-                                                      <div class="bk-image lex-fill space-code"></div>
-                                                      <div class="bk-t flex-fill">
-                                                         <div class="col-tit txt-leg-1-a">
-                                                            Compraste más de 1 entrada en esta misma orden
-                                                         </div>
-                                                         <div class="col-tit txt-leg-1">
-                                                            Si deseas que otra persona se conecte desde otra cuenta y dispositivo con una de tus entradas deberás enviarle un código
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                                   <div class="d-flex flex-column codes">
-                                                      <div class="flex-fill code-int-cover">
-                                                         <div class="codes-b">
-                                                            J5FG6H6fY9O
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- SIN VIDEO -->
-                                 <!-- Proximamente -->
-                                 <div class="card card-bk">
-                                    <div class="col-12">
-                                       <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                             <div class="d-flex  flex-md-row">
-                                                <div class="bk-image lex-fill">
-                                                   <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
-                                                </div>
-                                                <div class="bk-t flex-fill">
-                                                   <div class="col-tit tit-estado">
-                                                      El negro
-                                                   </div>
-                                                   <div class="col-tit txt-estado">
-                                                      Video disponible del 26-08-2020 hasta 29-09-2020
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                          <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                             <div class="code-int-cover">
-                                                <div class="codes-no-disponible">
-                                                   Ticket ya utilizado
-                                                </div>
-                                                <div class="codes-b inactivo">
-                                                   <span class="ico-no">
-                                                   <img src="img/private.svg" class="img-fluid" alt="no disponible">
-                                                   </span>
-                                                   J5FG6H6fY9O
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-12">
-                                       <div class="row bord">
-                                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                             <div class="row">
-                                                <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                                   <div class="d-flex">
-                                                      <div class="bk-image lex-fill space-code"></div>
-                                                      <div class="bk-t flex-fill">
-                                                         <div class="col-tit txt-leg-1-a">
-                                                            Compraste más de 1 entrada en esta misma orden
-                                                         </div>
-                                                         <div class="col-tit txt-leg-1">
-                                                            Si deseas que otra persona se conecte desde otra cuenta y dispositivo con una de tus entradas deberás enviarle un código
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-5 col-lg-5">
-                                                   <div class="d-flex flex-column codes">
-                                                      <div class="flex-fill code-int-cover">
-                                                         <div class="codes-b">
-                                                            J5FG6H6fY9O
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- Proximamente -->
                               </div>
-                              <!-- TAB ACTIVOS-->    
-                              <!-- TAB CADUCADOS-->    
-                              <div class="tab-pane fade" id="inactivos" role="tabpanel" aria-labelledby="inactivos-tab">
-                                 <!-- Proximamente -->
-                                 <div class="card card-bk">
-                                    <div class="col-12">
-                                       <div class="row">
-                                          <div class="col-12 col-sm-12 col-md-7 col-lg-7">
-                                             <div class="d-flex  flex-md-row">
-                                                <div class="bk-image lex-fill">
-                                                   <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
+                           </div>
+                           <div class="col-12">
+                              <div class="row otros-tickets">
+                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="row">
+                                       <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                          <div class="d-flex">
+                                             <div class="flex-fill">
+                                                <div class="col-tit txt-leg-1-a">
+                                                   Compraste más de 1 entrada en esta misma orden
                                                 </div>
-                                                <div class="bk-t flex-fill">
-                                                   <div class="col-tit tit-estado">
-                                                      El negro
+                                                <div class="col-tit txt-leg-1">
+                                                   Si deseas que otra persona se conecte con una de tus entradas deberás enviarle un link.<br>
+                                                   La otra persona deberá tener o crear una cuenta en Punto Ticket.
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                                          <div class="codes-scroll">
+                                             <div class="d-flex flex-column  codes">
+                                                <div>
+                                                   <div class="d-flex flex-row">
+                                                      <div class="num-ticket">
+                                                         Ticket 2 
+                                                      </div>
+                                                      <div class="flex-fill">
+                                                         <input type="text" value="http://623536545673"  class="codes-b" data-toggle="tooltip" data-placement="right" title="Click para copiar">
+                                                      </div>
                                                    </div>
-                                                   <div class="col-tit txt-estado">
-                                                      Video disponible del 26-08-2020 hasta 29-09-2020
+                                                </div>
+                                                <div>
+                                                   <div class="d-flex flex-row">
+                                                      <div class="num-ticket">
+                                                         Ticket 3 
+                                                      </div>
+                                                      <div class="flex-fill">
+                                                         <input type="text" value="http://623536545673"  class="codes-b" data-toggle="tooltip" data-placement="right" title="Click para copiar">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div>
+                                                   <div class="d-flex flex-row">
+                                                      <div class="num-ticket">
+                                                         Ticket 4 
+                                                      </div>
+                                                      <div class="flex-fill">
+                                                         <input type="text" value="http://623536545673"  class="codes-b inactivo" data-toggle="tooltip" data-placement="right" title="Link ya utilizado">
+                                                      </div>
                                                    </div>
                                                 </div>
                                              </div>
                                           </div>
                                        </div>
                                     </div>
+                                    <div class="row bord">
+                                       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                          <div class="d-flex">
+                                             <div class="col-tit txt-leg-1-orden">
+                                                Orden N° 367545673
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                          <div class="d-flex">
+                                             <div class="flex-fill">
+                                                <div class="col-tit txt-leg-1-a">
+                                                   Compraste más de 1 entrada en esta misma orden
+                                                </div>
+                                                <div class="col-tit txt-leg-1">
+                                                   Si deseas que otra persona se conecte con una de tus entradas deberás enviarle un link.<br>
+                                                   La otra persona deberá tener o crear una cuenta en Punto Ticket.
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                                          <div class="d-flex flex-row">
+                                             <div class="num-ticket">
+                                                Ticket 5 
+                                             </div>
+                                             <div class="flex-fill">
+                                                <input type="text" value="http://623536545673"  class="codes-b" data-toggle="tooltip" data-placement="right" title="Click para copiar">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
                                  </div>
-                                 <!-- Proximamente -->
                               </div>
-                              <!-- TAB CADUCADOS-->
                            </div>
                         </div>
-                        <div class="tab-pane fade" id="detallesdecompras-tab" role="tabpanel" aria-labelledby="detallesdecompra">
-                           <!-- filtro cantidades -->
-                           <div class="dropdown float-right filtro-cantidad">
-                              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Mostrar 50
-                              </a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 <a class="dropdown-item" href="#">Mostrar 80</a>
-                                 <a class="dropdown-item" href="#">Mostrar 100</a>
+                        <!-- card activos -->        
+                        <!-- SIN VIDEO -->
+                        <div class="card card-bk">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="d-flex">
+                                       <div class="col-tit txt-leg-1-orden">
+                                          Orden N° 367545673
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex  flex-md-row">
+                                       <div class="bk-image lex-fill">
+                                          <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
+                                       </div>
+                                       <div class="bk-t flex-fill">
+                                          <div class="col-tit tit-estado">
+                                             El negro
+                                          </div>
+                                          <div class="col-tit txt-estado">
+                                             Video disponible del 26-08-2020 hasta 29-09-2020
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                    <div class="col-tit">
+                                       <div class="d-flex flex-column flex-md-row">
+                                          <div class="num-ticket">
+                                             Ticket 1 
+                                          </div>
+                                          <div class="flex-fill">
+                                             <a href="" class="btn btn-vid btn-inactivo">
+                                             Ver video
+                                             </a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-tit">
+                                       <div class="d-flex flex-row">
+                                          <div>
+                                          </div>
+                                          <div class="flex-fill text-center">
+                                             <span class="link-info" >
+                                             O regala tu ticket enviando este link (Perderás la opción de verlo desde tu cuenta) 
+                                             </span>
+                                             <div class="col-tit text-center">
+                                                <input type="text"  class="code" value="htpp://37467358458" data-toggle="tooltip" data-placement="right" title="Click para copiar">       
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                                 </div>
                               </div>
                            </div>
-                           <!-- filtro cantidades -->
-                           <!-- TABLA  DE DATOS -->
-                           <div class="table-responsive">
-                              <table class="table tabla-datos" aligne="center">
-                                 <thead>
-                                    <tr>
-                                       <th scope="col">N° de Orden</th>
-                                       <th scope="col">Fecha Compra<span class="ico"><img src="img/002-left-arrow.svg" class="img-fluid flecha-orden-down" alt="flecha"></span></th>
-                                       <th scope="col">Cantidad</th>
-                                       <th scope="col" class="th-left">Evento</th>
-                                       <th scope="col" class="th-left">E-Ticket</th>
-                                       <th scope="col">Detalle</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    <tr class="row-wt">
-                                       <td width="15%">364763647</td>
-                                       <td width="15%">14-09-2020</td>
-                                       <td width="5%">1</td>
-                                       <td width="40%" class="th-left"><strong>El Negro</strong></td>
-                                       <td width="15%" ><button type="submit" class="btn-descargas" donwload="#"><i class="flaticon-down-arrow"></i>Descargar</button></td>
-                                       <td width="10%"><a href="#" data-toggle="modal" data-target="#verdetalle">Ver detalle</a></td>
-                                    </tr>
-                                 </tbody>
-                              </table>
+                           <div class="col-12">
+                              <div class="row bord">
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex">
+                                       <div class="flex-fill">
+                                          <div class="col-tit txt-leg-1-a">
+                                             Compraste más de 1 entrada en esta misma orden
+                                          </div>
+                                          <div class="col-tit txt-leg-1">
+                                             Si deseas que otra persona se conecte con una de tus entradas deberás enviarle un link.<br>
+                                             La otra persona deberá tener o crear una cuenta en Punto Ticket.
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                                    <div class="d-flex flex-row">
+                                       <div class="num-ticket">
+                                          Ticket 2
+                                       </div>
+                                       <div class="flex-fill">
+                                          <input type="text" value="http://623536545673"  class="codes-b" data-toggle="tooltip" data-placement="right" title="Click para copiar">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
-                           <!-- TABLA  DE DATOS -->
-                           <!-- PAGINADORES-->
-                           <nav aria-label="Page navigation " class="paginador">
-                              <ul class="pagination">
-                                 <li class="page-item"><a class="page-link rode" href="#"><</a></li>
-                                 <li class="page-item number active"><a class="page-link " href="#">1</a></li>
-                                 <li class="page-item number"><a class="page-link " href="#">2</a></li>
-                                 <li class="page-item number"><a class="page-link " href="#">3</a></li>
-                                 <li class="page-item"><a class="page-link rode" href="#">></a></li>
-                              </ul>
-                           </nav>
-                           <!-- PAGINADORES -->
                         </div>
-                        <div class="tab-pane fade" id="cambiarcontrasena-tab" role="tabpanel" aria-labelledby="cambiarcontrasena">...</div>
+                        <!-- SIN VIDEO -->
+                        <!-- Proximamente -->
+                        <div class="card card-bk">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex  flex-md-row">
+                                       <div class="bk-image lex-fill">
+                                          <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
+                                       </div>
+                                       <div class="bk-t flex-fill">
+                                          <div class="col-tit tit-estado">
+                                             El negro
+                                          </div>
+                                          <div class="col-tit txt-estado">
+                                             Video disponible del 26-08-2020 hasta 29-09-2020
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                                    <div class="col-tit">
+                                       <div class="d-flex flex-row">
+                                          <div class="flex-fill left-t">
+                                             <a  href="" class="btn btn-vid">
+                                             Ver video
+                                             </a>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-12">
+                              <div class="row bord">
+                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="d-flex">
+                                       <div class="col-tit txt-leg-1-orden">
+                                          <strong>Importante</strong>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex">
+                                       <div class="flex-fill">
+                                          <div class="col-tit txt-leg-1">
+                                             Desde el inicio del video tendrás 24 horas para verlo y todas las restricciones bla.
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Proximamente -->
                      </div>
+                     <!-- TAB ACTIVOS-->    
+                     <!-- TAB CADUCADOS-->    
+                     <div class="tab-pane fade" id="inactivos" role="tabpanel" aria-labelledby="inactivos-tab">
+                        <!-- Proximamente -->
+                        <div class="card card-bk">
+                           <div class="col-12">
+                              <div class="row">
+                                 <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="d-flex  flex-md-row">
+                                       <div class="bk-image lex-fill">
+                                          <img src="https://static.puntoticket.com/especiales/play/images/adee9c94-85da-4eec-92f0-1cff4a2d4bc2-img.jpg" class="img-fluid">
+                                       </div>
+                                       <div class="bk-t flex-fill">
+                                          <div class="col-tit tit-estado">
+                                             El negro
+                                          </div>
+                                          <div class="col-tit txt-estado">
+                                             Video disponible del 26-08-2020 hasta 29-09-2020
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Proximamente -->
+                     </div>
+                     <!-- TAB CADUCADOS-->
                   </div>
                </div>
             </div>
          </main>
          <footer id="footer">
             <div class="container">
+               <!-- MENU  FOOTER-->
+               <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="row">
+                     <div class="col-12 col-sm-12 col-md-12 col-lg-8  offset-lg-2">
+                        <div class="d-flex flex-column flex-md-row justify-content-center">
+                           <div class="text-center">
+                              <a href="http://www.puntoticket.com/paginas/play-condiciones" class="link-foot">
+                              términos y condiciones
+                              </a>
+                           </div>
+                           <div class="text-center">
+                              <a href="https://puntoticket.zendesk.com/hc/es/requests/new" class="link-foot">
+                              contacto
+                              </a>
+                           </div>
+                           <div class="text-center">
+                              <a href="https://puntoticket1.typeform.com/to/glskupRY" class="link-foot">
+                              transmite con nosotros
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- MENU  FOOTER-->
                <div class="wrapp-footer d-flex justify-content-center flex-column">
                   <div id="email-msg" class="title text-center">Te avisaremos a tu mail para que no se te pase ninguna transmisión</div>
                   <form id="formMail" class="form-mail d-flex align-items-center justify-content-center" data-aos-duration="600" data-aos="fade-down" data-aos-delay="900">
@@ -516,114 +576,26 @@
             </div>
          </footer>
       </div>
-      <!-- modal detalle -->
-      <!--<div class="modal fade" id="verdetalle" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-             <div class="modal-content">
-                 ...
-             </div>
-         </div>
-         </div>-->    
-      <div class="modal fade" id="verdetalle" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-               <div class="modal-body">
-                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                     <div class="row">
-                        <div class="col-12">
-                           <span class="float-right cerrar-mod" data-dismiss="modal" aria-label="Close">
-                           <i class="flaticon-close"></i>
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="brd">
-                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="row">
-                           <div class="col-6">
-                              <div class="col-tit">
-                                 <div class="cop">Medio pago</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">Banco de Chile</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">Pago en Línea</div>
-                              </div>
-                           </div>
-                           <div class="col-6">
-                              <div class="col-tit">
-                                 <div class="cop">Total</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">$5.800</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="brd">
-                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="row">
-                           <div class="col-6">
-                              <div class="col-tit">
-                                 <div class="cop">Tipo Envío</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">E-Ticket</div>
-                              </div>
-                           </div>
-                           <div class="col-6">
-                              <div class="col-tit">
-                                 <div class="cop">Estado</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">Entregada</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="brd">
-                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="row">
-                           <div class="col-12">
-                              <div class="col-tit">
-                                 <div class="cop">Documentos Electrónicos</div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="cop-int">
-                                    <button type="submit" class="btn-descargas-mod" donwload="#">
-                                    <i class="descarga-modal flaticon-down-arrow"></i>Descargar</button>
-                                 </div>
-                              </div>
-                              <div class="col-tit">
-                                 <div class="link-info-modal" >
-                                    <span class="ico"><img src="img/005-information.svg" class="img-fluid infoico" alt="info"></span>Algunos documentos aún no se han generado
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+      <!--  TOAST ---->
+      <div class="toast">
+         <div class="toast-body">
+            <img src="img/ok.svg" alt="ok">&nbsp;Link copiado en portapapeles.
          </div>
       </div>
-      <!-- modal detalle -->
+      <!-- TOAST -->
       <script type="text/javascript">
-         // ORDEN FECHA DE COMPRA
-         $('.flecha-orden-down').click(function(){
-         $(this).toggleClass('flecha-orden-up');
-             });
-         // BOTÓN AYUDA    
-         $('#btn-ayuda').click(function(){
-            $('.listado-ayuda').toggleClass('ver');
+         $('.code, .codes-b').hover(function(){
+            $(this).tooltip('show');
          });
-         // PAGINADORES
-         $('.paginador .page-item.number').on('click', function(){
-            $(this).addClass('active').siblings().removeClass('active');
+         
+         $(document).ready(function(){
+            $('.code, .codes-b').click(function(){
+               $(this).select();
+               document.execCommand('copy'); 
+               $('.toast').toast('show');
+            });
          });
+         
       </script>
       <script type="text/javascript">
          function share_fb() {
@@ -638,3 +610,4 @@
       </script>
    </body>
 </html>
+
